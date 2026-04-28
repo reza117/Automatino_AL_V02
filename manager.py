@@ -45,7 +45,15 @@ def task_verify_pxe(row):
 
 def task_reboot(row):
     ip, user, pw = row
-    success, msg = run_ipmi(ip, user, pw, ["chassis", "power", "reset"])
+    try:
+        result = subprocess.check_output(
+            ["ipmitool", "-H", ip, "-U", user, "-P", pw, "chassis", "power", "cycle"],
+            stderr=subprocess.STDOUT,
+            timeout=10
+        ).decode()
+        success, msg = True, result
+    except Exception as e:
+        success, msg = False, str(e)
     status = "Sent" if success else "Failed"
     update_db("reboot_sent", status, ip)
 

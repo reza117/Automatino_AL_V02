@@ -52,7 +52,7 @@ def manual_ipmi_menu(creds):
         print(f"\n--- [IPMI CONTROL: {ip}] ---")
         print("1. Set PXE Boot")
         print("2. Verify PXE Flag")
-        print("3. Power Reset (Reboot)")
+        print("3. Power Cycle (Reboot)")
         print("b. Back")
         
         choice = input("\nSelect Action: ")
@@ -66,8 +66,8 @@ def manual_ipmi_menu(creds):
             print("[VERIFIED] PXE Active" if (success and "pxe" in msg.lower()) else f"[FAIL] {msg}")
         elif choice == '3':
             if input(f"Confirm Reboot {ip}? (y/n): ").lower() == 'y':
-                run_command(f"ipmitool -I lanplus -H {ip} -U {user} -P '{pw}' chassis power reset")
-                print("[OK] Reset sent.")
+                run_command(f"ipmitool -H {ip} -U {user} -P '{pw}' chassis power cycle")
+                print("[OK] Cycle sent.")
         elif choice == 'b':
             break
 

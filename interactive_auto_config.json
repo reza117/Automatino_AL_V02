@@ -1,0 +1,76 @@
+{
+  "database": {
+    "path": "wdc_inventory.db"
+  },
+  "files": {
+    "seed_ipmi_csv": "list.csv",
+    "data_dir": "data",
+    "wipe_script": "wdc_bootstrap.sh"
+  },
+  "defaults": {
+    "menu_timeout_seconds": 5,
+    "dhcp_poll_seconds": 10,
+    "dhcp_ping_timeout_seconds": 1,
+    "dhcp_ping_workers": 32,
+    "dhcp_watch_loops": 60,
+    "ssh_start_delay_after_dhcp_seconds": 180,
+    "ssh_watch_attempts": 60,
+    "ssh_connect_timeout_seconds": 5,
+    "ssh_connection_attempts": 1,
+    "ssh_retry_delay_seconds": 1,
+    "power_wait_after_on_seconds": 10,
+    "power_wait_after_cycle_seconds": 10,
+    "ssh_user": "user",
+    "ipmi_default_udp_port": 623
+  },
+  "netboot": {
+    "host": "192.168.122.114",
+    "user": "netboot",
+    "DHCP_LEASE_FILE": "/var/lib/misc/dnsmasq.leases"
+  },
+  "ssh": {
+    "identity_file": "~/.ssh/id_rsa"
+  },
+  "mgmt_ranges": {
+    "MGMT_1": "172.16.136.0/22",
+    "MGMT_2": "172.16.148.0/22"
+  },
+  "ipmi_ranges": {
+    "IPMI_1": "172.16.132.0/22",
+    "IPMI_2": "172.16.144.0/22"
+  },
+  "possible_ipmi_credentials": [
+    {
+      "username": "Wigner",
+      "password": "Wigner"
+    },
+    {
+      "username": "root",
+      "password": "root"
+    },
+    {
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "username": "Wigner",
+      "password": "WignerALICEAF"
+    },
+    {
+      "username": "root",
+      "password": "WignerALICEAF"
+    },
+    {
+      "username": "root",
+      "password": "Wigner"
+    },
+    {
+      "username": "root",
+      "password": "wigner"
+    },
+    {
+      "username": "ADMIN",
+      "password": "ADMIN"
+    }
+  ]
+}
